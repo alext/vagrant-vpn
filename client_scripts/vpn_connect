@@ -14,3 +14,5 @@ VPN_URL=$1
 echo "Fixing firewall rules to allow host SSH"
 sudo iptables -I INPUT 1 -s 10.0.2.2 -j ACCEPT
 sudo iptables -I OUTPUT 1 -d 10.0.2.2 -j ACCEPT
+
+ip route | awk '/default/ { next } /via 10.0.2.2/ {print $1}' > /vagrant/vpn_ip

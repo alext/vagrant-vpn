@@ -1,0 +1,7 @@
+#!/bin/sh
+
+set -eu
+
+/opt/cisco/anyconnect/bin/vpn disconnect
+
+rm -f /vagrant/vpn_ip

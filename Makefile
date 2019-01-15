@@ -10,4 +10,4 @@ vpn_connect: ## Establish the VPN connection in the VM.
 
 .PHONY: vpn_connect
 vpn_disconnect: ## Close the VPN connection in the VM.
-	vagrant ssh -- -t /opt/cisco/anyconnect/bin/vpn disconnect
+	vagrant ssh -- -t /vagrant/client_scripts/vpn_disconnect
