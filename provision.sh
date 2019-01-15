@@ -31,3 +31,15 @@ cd /opt/.cisco/certificates
 mv ca ca.orig
 ln -s /etc/ssl/certs ca
 /etc/init.d/vpnagentd restart
+
+## Configure networking
+
+apt-get -q -y install network-manager
+
+rm -f /etc/netplan/50-cloud-init.yaml
+cat <<EOF > /etc/netplan/01-network-manager-all.yaml
+# Let NetworkManager manage all devices on this system
+network:
+  version: 2
+  renderer: NetworkManager
+EOF

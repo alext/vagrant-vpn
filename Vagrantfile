@@ -20,4 +20,9 @@ Vagrant.configure("2") do |config|
   config.vm.provision "shell" do |s|
     s.path = "./provision.sh"
   end
+
+  config.trigger.after [:provision] do |t|
+    t.name = "Reboot after provisioning"
+    t.run = { :inline => "vagrant reload" }
+  end
 end
