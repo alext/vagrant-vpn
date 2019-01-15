@@ -5,4 +5,8 @@ Vagrant.configure("2") do |config|
     vb.customize [ "modifyvm", :id, "--uartmode1", "disconnected" ]
     vb.default_nic_type = "virtio"
   end
+
+  config.vm.provision "shell" do |s|
+    s.path = "./provision.sh"
+  end
 end
