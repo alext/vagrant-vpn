@@ -1,0 +1,16 @@
+#!/bin/sh
+
+set -eu
+
+if [ -z "${1-}" ]; then
+  echo "Usage ${0} <URL>"
+  exit 1
+fi
+
+VPN_URL=$1
+
+/opt/cisco/anyconnect/bin/vpn connect "${VPN_URL}"
+
+echo "Fixing firewall rules to allow host SSH"
+sudo iptables -I INPUT 1 -s 10.0.2.2 -j ACCEPT
+sudo iptables -I OUTPUT 1 -d 10.0.2.2 -j ACCEPT
