@@ -25,3 +25,9 @@ for file in /vagrant/anyconnect-linux64-*.sh; do
   sh "${file}"
   break # Avoid installing multiple versions...
 done
+
+echo "Fixing up CA certs"
+cd /opt/.cisco/certificates
+mv ca ca.orig
+ln -s /etc/ssl/certs ca
+/etc/init.d/vpnagentd restart
