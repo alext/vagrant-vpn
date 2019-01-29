@@ -16,6 +16,8 @@ apt-get -y -q install clamav-daemon
 
 ## Install anyconnect
 
+apt-get -y -q install libgtk2.0-0
+
 # Cisco installer attempts to write to these directories.
 mkdir -p /usr/share/icons/hicolor/128x128/apps/
 mkdir -p /usr/share/desktop-directories/
